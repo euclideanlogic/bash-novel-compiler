@@ -1,0 +1,51 @@
+#let make_title_page=[
+
+    #let today = datetime.today()
+    #set page(
+        header: none
+    )
+    \ \ \ \ \ \ \ \ \
+
+    #align(center)[
+        #upper(title)
+
+        #first_name #last_name
+
+        #today.display("[month repr:long] [day], [year]")
+    ]
+
+    #pagebreak()
+]
+
+#let make_chapter_head(ch_title)=[
+    \ \ \ \
+    #align(center)[= #ch_title]
+    \ \ \ \
+]
+
+#let make_scene_break=[
+    #align(center)[#scene_break]
+]
+
+#let make_chapter_end=[
+    #pagebreak()
+]
+
+#set par(
+    first-line-indent: 0.5in,
+    spacing: 2em,
+    leading: 2em
+)
+
+#set page(
+    paper: "us-letter"
+)
+
+#make_title_page
+
+#set page(
+    header:
+        align(right)[
+            #last_name | #title | #{context here().page() - 1}
+        ],
+)
